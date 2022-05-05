@@ -10,4 +10,11 @@ public class StateTax {
     this.stateTax = stateTax;
     this.stateName = stateName;
   }
+
+  public StateTax() {
+  }
+
+  public double getStateTax() {
+    return stateTax;
+  }
 }

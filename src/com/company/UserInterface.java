@@ -3,16 +3,19 @@ package com.company;
 import java.util.Scanner;
 
 public class UserInterface {
+  private StateTaxList stateTaxList = new StateTaxList();
+  private StateTax stateTax = new StateTax();
 
   public void run() {
-    StateTaxList stateTaxList = new StateTaxList();
+
 
     stateTaxList.createStateTaxes();
 
-    welcomeMessage();
+    enterInfo();
+
   }
 
-  public void welcomeMessage() {
+  public void enterInfo() {
     Scanner sc = new Scanner(System.in);
 
     System.out.println("Welcome to THE TOTAL PRICE APPLICATION X-TREME");
@@ -23,6 +26,9 @@ public class UserInterface {
 
     System.out.println("Enter the cost of one unit:");
     double pricePrUnit = sc.nextDouble();
+
+    System.out.println("Enter your state code:");
+    String stateCode = sc.nextLine();
 
     System.out.println("Total price before tax:");
     double totalPriceBeforeTax = totalPriceBefore(amountOfUnits, pricePrUnit);
@@ -39,6 +45,6 @@ public class UserInterface {
   }
 
   public double totalPriceAfterTax(double totalPriceBeforeTax) {
-    return totalPriceBeforeTax * 1.0655;
+    return totalPriceBeforeTax * 1.0685;
   }
 }
