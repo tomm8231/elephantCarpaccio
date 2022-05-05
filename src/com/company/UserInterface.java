@@ -28,13 +28,14 @@ public class UserInterface {
     double pricePrUnit = sc.nextDouble();
 
     System.out.println("Enter your state code:");
+    sc.nextLine();
     String stateCode = sc.nextLine();
 
     System.out.println("Total price before tax:");
     double totalPriceBeforeTax = totalPriceBefore(amountOfUnits, pricePrUnit);
     System.out.println(totalPriceBeforeTax);
 
-    double totalPriceAfterTax = totalPriceAfterTax(totalPriceBeforeTax);
+    double totalPriceAfterTax = totalPriceAfterTax(totalPriceBeforeTax, stateCode);
     System.out.println("Total price after tax:");
     System.out.println(totalPriceAfterTax);
 
@@ -44,7 +45,12 @@ public class UserInterface {
     return amountOfUnits * pricePrUnit;
   }
 
-  public double totalPriceAfterTax(double totalPriceBeforeTax) {
-    return totalPriceBeforeTax * 1.0685;
+  public double totalPriceAfterTax(double totalPriceBeforeTax, String stateCode) {
+    for (int i = 0; i < stateTaxList.getTaxRates().size(); i++) {
+      if (stateCode.equals(stateTaxList.getTaxRates().get(i).getStateName())) {
+        return totalPriceBeforeTax * stateTaxList.getTaxRates().get(i).getStateTax();
+      }
+    }
+    return 0;
   }
 }

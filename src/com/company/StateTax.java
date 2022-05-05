@@ -17,4 +17,8 @@ public class StateTax {
   public double getStateTax() {
     return stateTax;
   }
+
+  public String getStateName() {
+    return stateName;
+  }
 }
