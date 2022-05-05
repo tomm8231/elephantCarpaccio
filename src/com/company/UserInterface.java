@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class UserInterface {
 
   public void run() {
+    StateTaxList stateTaxList = new StateTaxList();
+
+    stateTaxList.createStateTaxes();
+
     welcomeMessage();
   }
 
